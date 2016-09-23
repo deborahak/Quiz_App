@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <title></title>
-  <link rel="stylesheet" type="text/css" href="">
-  <link rel="stylesheet" href="main.css">
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="">
+    <link rel="stylesheet" href="main.css">
 </head>
+
 <body>
-  <h1>Ancient Greece and Rome</h1>
-   <!-- <div id="js-start">
-    <p>Do you remember your Ancient History?  Show the Greeks and Romans some love, and some knowledge! </p>
-    <p><em>Buona Fortuna!</em></p>
-    <form name="game-start">
-      <button type="submit">Begin</button>
-    </form>
-  -->
-  <div class="container" id="nowQuestion"></div>
-  <div id="nowAnswers">
-    <form>
-      <input type="radio">
-    </form>
-  </div>
-  <button class="nxt">Next</button>
-<script src="http://code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript" src="js/app.js"></script>
+    <h1>Ancient Greece and Rome</h1>
+    <div id="gameStart">
+        <p>Do you remember your Ancient History? Show the Greeks and Romans some love, and some knowledge! </p>
+        <p><em>Buona Fortuna!</em></p>
+        <!--<form name="gameBegin">
+            <button class="begin" type="submit">Begin</button>
+        </form> -->
+        </div>
+        <div class="container" id="nowQuestion">
+        <form>
+            <input type="radio" name="choice"/>
+        </form>
+        </div>
+        <button class="nxt">Next</button>
+        <div id="farewell"></div>
+        <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
 </body>
+
 </html>

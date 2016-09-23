@@ -1,5 +1,8 @@
 $(document).ready(function() {
-    var nextQuestion = 0;
+
+    var currentQuestion = 0;
+    var numberCorrect = 0;
+
     var questions = [
         // object literal
         {
@@ -24,37 +27,42 @@ $(document).ready(function() {
             correct: 1
         }
 
-    ]; // an array of objects; numbers, etc.
+    ]; 
 
     $("#nowQuestion").html(questions[0].question + "<br/>");
     // agnostic
     for (var i = 0; i < questions[0].answers.length; i++) {
-        $('#nowQuestion').append('<input type="radio">' + questions[0].answers[i] + ' <br/>');
-    } // li??
-    // hint: arrays --> for loop
+        $('#nowQuestion').append('<input type="radio" name="choice" value="' + i + '">' + questions[0].answers[i] + ' <br/>');
+    } 
+
     $(".nxt").on("click", function(event) {
+        /*
+        Goes to the next question
+        */
         event.preventDefault();
-        nextQuestion++;
+        updateScore();
+        currentQuestion++;
 
-        // IF WE HAVE REACHED THE LAST question
-        //   CONGRATULATE QUIZ TAKER
-        // ELSE
-        //   SHOW THE NEXT question
-        //   ===, < , > , !
-
-        if (nextQuestion === questions.length) {
+        if (currentQuestion === questions.length) {
             alert("Congratulations! You finished!");
+            $("#farewell").html("Excellent! Your final score is " + numberCorrect)
         } else {
-
-
-            $("#nowQuestion").html(questions[nextQuestion].question + "<br/>");
+            $("#nowQuestion").html(questions[currentQuestion].question + "<br/>");
             // agnostic
-            for (var i = 0; i < questions[nextQuestion].answers.length; i++) {
-                $('#nowQuestion').append('<input type="radio">' + questions[nextQuestion].answers[i] + ' <br/>');
+            for (var i = 0; i < questions[currentQuestion].answers.length; i++) {
+                $('#nowQuestion').append('<input type="radio" name="choice" value="' + i + '">' + questions[currentQuestion].answers[i] + ' <br/>');
             } // li??
         }
     });
 
+    function updateScore() {
+        var answer = $("input[type='radio']:checked").val();
+        if (answer == questions[currentQuestion].correct) {
+            numberCorrect++;
+        } else {
+            alert("So sorry...INCORRECT! Correct answer: " + questions[currentQuestion].answers[questions[currentQuestion].correct]);
+        }
+    }
 
 
 
